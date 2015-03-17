@@ -1,0 +1,21 @@
+
+<div class="navbarr">
+	<div class="header_container">
+		<%= link_to root_path do %>
+		<div class="brand">Ontrast</div>
+		<% end %>
+		
+		<li class="dropdown navtype">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contests<b class="caret"></b></a>
+          <ul class="dropdown-menu pull-right">
+          	<li class="dropdowns">Current submissions</li>
+            <li class="dropdowns"><%= link_to "Suggest a contest", suggest_path %></li>
+            <li class="dropdowns"><%= link_to "Sponsor and partner", sponsor_path %></li>
+          </ul>
+    </li>
+      
+        <li class="navv">Photos</li>
+        <li class="navv">Submit</li>
+		
+	</div>
+</div>
