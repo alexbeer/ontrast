@@ -16,14 +16,14 @@ Rails.application.routes.draw do
   get "suggest" => "pages#suggest"
 
   get "contest" => "posts#individual_contest"
- 
-  get "photos" => "posts#photo_submissions"
 
   get "currentcontests" => "posts#all_current_contests"
 
   get "awaitingcontests" => "posts#awaiting_contests"
 
   get "newcontest" => "posts#new_contest"
+
+
 
 
 
