@@ -24,7 +24,9 @@ Rails.application.routes.draw do
   get "newcontest" => "posts#new_contest"
 
 
-
+  resources :contests do
+    resources :photos
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

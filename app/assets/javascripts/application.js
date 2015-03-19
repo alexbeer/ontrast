@@ -14,6 +14,14 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
 
 
+$(document).on('ready page:load', function() {
+  $('input.date').parents('.input-group').addClass('date');
+  $('input.date').parents('.input-group').datetimepicker({
+    format: 'MM/DD/YYYY'
+  });
+});
