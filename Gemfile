@@ -49,7 +49,7 @@ end
 
 gem 'email_validator', '~> 1.5.0'
 gem 'carrierwave', '~> 0.10.0'
-gem 'rmagick'
+gem 'mini_magick', '~> 3.8.0'
 gem 'bootstrap_form'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
