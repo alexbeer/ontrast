@@ -1,4 +1,6 @@
 class Contest < ActiveRecord::Base
+  has_many :photos, dependent: :destroy
+
   validates :title, presence: true, uniqueness: true
   validates :header_image, presence: true
 
@@ -33,9 +35,21 @@ class Contest < ActiveRecord::Base
     write_attribute :end_at, Date.strptime(str, '%m/%d/%Y') unless str.strip.blank?
   end
 
-  def approve!
+  def approve
     self.status = 'approved'
-    save!
+    save
+  end
+
+  def approved?
+    self.status == 'approved'
+  end
+
+  def pending?
+    self.status == 'pending'
+  end
+
+  def self.current_contests(n)
+    approved.where('start_at <= ? AND end_at > ?', Time.now, Time.now).order(created_at: :desc).limit(n)
   end
 
   protected

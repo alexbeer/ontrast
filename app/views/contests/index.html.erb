@@ -1,0 +1,8 @@
+<% @contests.each do |contest| %>
+  <div class="contest_box" style="background: url(<%= contest.header_image.thumb_large.url %>) center no-repeat">
+    <a href="<%= contest_path(contest) %>">
+      <div class="all_contest_title"><%= contest.title %></div>
+    </a>
+    <!-- Display time left -->
+  </div>
+<% end %>

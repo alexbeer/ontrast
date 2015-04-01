@@ -14,9 +14,12 @@ class ContestsController < ApplicationController
   end
 
   def index
+    @contests = Contest.current_contests(10)
   end
 
-  def destroy
+  def show
+    @contest = Contest.find params[:id]
+    @photo = Photo.new contest: @contest
   end
 
   private

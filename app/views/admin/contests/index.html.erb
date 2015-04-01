@@ -1,0 +1,17 @@
+<div class="awaiting_approval_title">Awaiting Approval (Only can be viewed by admin)</div>
+
+<% if @contests.count == 0 and params[:action] == 'index' %>
+  <p class="alert alert-info">There are no contests awaiting approval. <%= link_to 'Show all contests', all_admin_contests_path %></p>
+<% end %>
+
+<% @contests.each do |contest| %>
+  <div class="contest_box" style="background: url(<%= contest.header_image.thumb_large.url %>) center no-repeat">
+    <b><%= contest.title %></b>
+    <% unless contest.approved? %>
+      <%= link_to 'Approve', approve_admin_contest_path(contest), method: 'PUT', class: 'btn btn-primary approve_button' %>
+    <% end %>
+
+    <%= link_to 'Edit', edit_admin_contest_path(contest), class: 'btn btn-info' %>
+    <%= link_to 'Delete', admin_contest_path(contest), method: 'DELETE', class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>

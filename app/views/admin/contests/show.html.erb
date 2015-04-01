@@ -1,0 +1,26 @@
+<div class="header_image" style="background: url(<%= @contest.header_image.url %>) center no-repeat">
+  <div class="contest_title"><%= @contest.title %></div>
+</div>
+
+
+<div class="contest_tabs_restrict" role="main-tabs">
+  <ul id="main-tabs" class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#photos" id="photos-tab" role="tab" data-toggle="tab" aria-controls="photos">Current Entries</a></li>
+    <li role="presentation"><a href="#rules" id="rules-tab" role="tab" data-toggle="tab" aria-controls="rules">Rules</a></li>
+  </ul>
+
+<!-- in 'current_entries' tab -->
+  <div class="tab-content">
+    <div id="photos" role="main-tabs" class="tab-pane active" aria-labelledby="photos-tab">
+      <% @contest.photos.each do |photo| %>
+        <div class="box">
+          <%= image_tag photo.image.url %>
+          <%= link_to 'Delete photo', admin_contest_photo_path(@contest, photo), method: 'Delete', data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="rules" role="main-tabs" class="tab-pane" aria-labelledby="rules-tab">
+      <pre><%= @contest.rules %></pre>
+    </div>
+</div>

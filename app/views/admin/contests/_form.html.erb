@@ -1,0 +1,21 @@
+<div class="container">
+<%= bootstrap_form_for [:admin, @contest] do |f| %>
+  <%= f.file_field :header_image, hide_label: true %>
+  <%= f.text_field :title, placeholder: 'title', hide_label: true %>
+  <%= f.text_field :prize, placeholder: 'prize', hide_label: true %>
+  <%= f.text_area :description, placeholder: 'description', hide_label: true %>
+  <%= f.text_area :rules, placeholder: 'rules', hide_label: true %>
+  <%= f.text_field :name, placeholder: 'name', hide_label: true %>
+  <%= f.text_field :company, placeholder: 'company (optional)', hide_label: true %>
+  <%= f.text_field :email, placeholder: 'email', hide_label: true %>
+
+  <%= f.text_field :start_at, placeholder: 'start at', value: @contest.start_at.try(:strftime, '%m/%d/%Y'), class: 'date', hide_label: true, append: '<span class="glyphicon glyphicon-calendar"></span>'.html_safe %>
+  <%= f.text_field :end_at, placeholder: 'end at', value: @contest.end_at.try(:strftime, '%m/%d/%Y'), class: 'date', hide_label: true, append: '<span class="glyphicon glyphicon-calendar"></span>'.html_safe %>
+
+  <%= f.form_group do %>
+    <%= f.submit %>
+  <% end %>
+  <!-- Somehow have a way of displaying time of contest, then have a countdown (starting when i approve) -->
+
+<% end %>
+</div>

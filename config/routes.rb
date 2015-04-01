@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-
   root 'pages#home'
 
   get "about" => "pages#about"
@@ -15,7 +13,7 @@ Rails.application.routes.draw do
 
   get "suggest" => "pages#suggest"
 
-  get "contest" => "posts#individual_contest"
+  get "individual_contest" => "posts#individual_contest"
 
   get "currentcontests" => "posts#all_current_contests"
 
@@ -28,6 +26,24 @@ Rails.application.routes.draw do
     resources :photos
   end
 
+
+  devise_for :admins
+
+  namespace :admin do
+    root to: 'contests#index'
+    resources :contests, only: [:show, :index, :edit, :update, :destroy] do
+      resources :photos, only: [:destroy] do
+      end
+
+      member do
+        put 'approve', as: :approve
+      end
+
+      collection do
+        get 'all', as: :all
+      end        
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
