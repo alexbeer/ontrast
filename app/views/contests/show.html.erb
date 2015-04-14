@@ -31,6 +31,12 @@
         <%= f.text_field :caption, placeholder: 'Caption', hide_label: true %>
         <%= f.text_field :name, placeholder: 'Name', hide_label: true %>
         <%= f.text_field :email, placeholder: 'Email', hide_label: true %>
+
+        <%= f.text_field :facebook_handle, placeholder: 'Facebook handle (optional)', hide_label: true %>
+        <%= f.text_field :twitter_handle, placeholder: 'Twitter handle (optional)', hide_label: true %>
+        <%= f.text_field :instagram_handle, placeholder: 'Instagram handle (optional)', hide_label: true %>
+        <%= f.text_field :website_url, placeholder: 'Website (optional)', hide_label: true %>
+        
         <%= f.form_group do %>
           <%= f.submit %>
         <% end %>

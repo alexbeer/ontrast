@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401184723) do
+ActiveRecord::Schema.define(version: 20150414142149) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -42,9 +42,13 @@ ActiveRecord::Schema.define(version: 20150401184723) do
     t.string   "company"
     t.datetime "start_at"
     t.datetime "end_at"
-    t.string   "status",       default: "pending", null: false
+    t.string   "status",           default: "pending", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "facebook_handle"
+    t.string   "twitter_handle"
+    t.string   "instagram_handle"
+    t.string   "website_url"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -55,6 +59,10 @@ ActiveRecord::Schema.define(version: 20150401184723) do
     t.string   "email"
     t.integer  "contest_id"
     t.string   "name"
+    t.string   "facebook_handle"
+    t.string   "twitter_handle"
+    t.string   "instagram_handle"
+    t.string   "website_url"
   end
 
 end

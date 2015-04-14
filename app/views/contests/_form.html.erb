@@ -12,6 +12,11 @@
 	<%= f.text_field :start_at, placeholder: 'start at', value: @contest.start_at.try(:strftime, '%m/%d/%Y'), class: 'date', hide_label: true, append: '<span class="glyphicon glyphicon-calendar"></span>'.html_safe %>
 	<%= f.text_field :end_at, placeholder: 'end at', value: @contest.end_at.try(:strftime, '%m/%d/%Y'), class: 'date', hide_label: true, append: '<span class="glyphicon glyphicon-calendar"></span>'.html_safe %>
 
+	<%= f.text_field :facebook_handle, placeholder: 'Facebook handle (optional)', hide_label: true %>
+	<%= f.text_field :twitter_handle, placeholder: 'Twitter handle (optional)', hide_label: true %>
+	<%= f.text_field :instagram_handle, placeholder: 'Instagram handle (optional)', hide_label: true %>
+	<%= f.text_field :website_url, placeholder: 'Website (optional)', hide_label: true %>
+
 	<%= f.form_group do %>
 		<%= f.submit %>
 	<% end %>
