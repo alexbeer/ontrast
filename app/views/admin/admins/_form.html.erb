@@ -1,0 +1,9 @@
+<%= bootstrap_form_for [:admin, @admin] do |f| %>
+  <%= f.email_field :email %>
+  <%= f.password_field :password %>
+  <%= f.password_field :password_confirmation %>
+
+  <%= f.form_group do %>
+    <%= f.submit %>
+  <% end %>
+<% end %>

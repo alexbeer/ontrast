@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'contests#index'
+
     resources :contests, only: [:show, :index, :edit, :update, :destroy] do
       resources :photos, only: [:destroy] do
       end
@@ -43,6 +44,8 @@ Rails.application.routes.draw do
         get 'all', as: :all
       end        
     end
+
+    resources :admins
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

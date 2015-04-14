@@ -16,6 +16,11 @@
       
         <li class="navv">Photos</li>
         <li class="navv">Submit</li>
-		
+
+        <% if admin_signed_in? %>
+          <li class="navv"><%= link_to 'Contests', admin_contests_path %></li>
+          <li class="navv"><%= link_to 'Admins', admin_admins_path %></li>
+        <% end %>
+
 	</div>
 </div>
