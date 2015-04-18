@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require moment
 //= require bootstrap-datetimepicker
+//= require fancybox
 //= require_tree .
 
 
@@ -24,4 +25,6 @@ $(document).on('ready page:load', function() {
   $('input.date').parents('.input-group').datetimepicker({
     format: 'MM/DD/YYYY'
   });
+
+  $('a.submission').fancybox();
 });

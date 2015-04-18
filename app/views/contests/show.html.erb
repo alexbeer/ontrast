@@ -15,7 +15,7 @@
     <div id="photos" role="main-tabs" class="tab-pane active" aria-labelledby="photos-tab">
       <% @contest.photos.each do |photo| %>
         <div class="box">
-          <%= image_tag photo.image.url %>
+          <a href="<%= photo.image.url %>" class="submission" rel="contest" title="<%= photo.caption %>"><%= image_tag photo.image.thumb_large.url %></a>
         </div>
       <% end %>
     </div>
