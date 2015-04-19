@@ -46,6 +46,10 @@ group :development, :test do
   gem 'better_errors'
 end
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
 gem 'email_validator', '~> 1.5.0'
 gem 'carrierwave', '~> 0.10.0'
