@@ -12,6 +12,7 @@ class ContestsController < ApplicationController
     if @contest.save
       redirect_to contest_path(@contest)
     else
+      @s3_presigned_posts = (1..100).map { |i| s3_presigned_post('contests') }
       render action: 'new'
     end
   end
