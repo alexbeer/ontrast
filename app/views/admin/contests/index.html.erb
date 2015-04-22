@@ -1,4 +1,8 @@
-<div class="awaiting_approval_title">Awaiting Approval</div>
+<% if params[:action] == 'index' %>
+  <div class="awaiting_approval_title">Awaiting Approval</div>
+<% else %>
+  <div class="awaiting_approval_title">All Contests</div>
+<% end %>
 
 <% if @contests.count == 0 and params[:action] == 'index' %>
   <p class="alert alert-info">There are no contests awaiting approval. <%= link_to 'Show all contests', all_admin_contests_path %></p>
