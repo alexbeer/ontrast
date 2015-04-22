@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150414142149) do
+ActiveRecord::Schema.define(version: 20150422165549) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20150414142149) do
 
   create_table "contests", force: :cascade do |t|
     t.string   "title"
-    t.string   "header_image"
     t.text     "prize"
     t.text     "description"
     t.text     "rules"
@@ -49,6 +48,9 @@ ActiveRecord::Schema.define(version: 20150414142149) do
     t.string   "twitter_handle"
     t.string   "instagram_handle"
     t.string   "website_url"
+    t.string   "image_large_url"
+    t.string   "image_medium_url"
+    t.string   "image_thumb_url"
   end
 
   create_table "photos", force: :cascade do |t|

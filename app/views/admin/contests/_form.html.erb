@@ -1,6 +1,19 @@
+<script type="text/javascript">
+  s3PresignedPosts = <%= @s3_presigned_posts.to_json.html_safe %>;
+</script>
+
 <div class="container">
 <%= bootstrap_form_for [:admin, @contest] do |f| %>
-  <%= f.file_field :header_image, hide_label: true %>
+  <%= f.file_field :header_image, hide_label: true, class: 's3-upload' %>
+  <div class="progress" style="display: none">
+    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    </div>
+  </div>
+
+  <%= f.hidden_field :image_large_url %>
+  <%= f.hidden_field :image_medium_url %>
+  <%= f.hidden_field :image_thumb_url %>
+
   <%= f.text_field :title, placeholder: 'title', hide_label: true %>
   <%= f.text_field :prize, placeholder: 'prize', hide_label: true %>
   <%= f.text_area :description, placeholder: 'description', hide_label: true %>

@@ -1,4 +1,6 @@
 class Admin::ContestsController < ApplicationController
+  include S3PresignedPost
+
   before_filter :authenticate_admin!
 
   def index
@@ -21,6 +23,7 @@ class Admin::ContestsController < ApplicationController
 
   def edit
     @contest = Contest.find params[:id]
+    @s3_presigned_posts = (1..100).map { |i| s3_presigned_post('contests') }
   end
 
   def update
@@ -46,6 +49,6 @@ class Admin::ContestsController < ApplicationController
   private
 
   def contest_params
-    params.require(:contest).permit :title, :header_image, :status, :email, :prize, :description, :start_at, :end_at, :rules, :name, :company
+    params.require(:contest).permit :title, :status, :email, :prize, :description, :start_at, :end_at, :rules, :name, :company, :image_large_url, :image_medium_url, :image_thumb_url
   end
 end

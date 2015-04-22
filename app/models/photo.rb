@@ -5,6 +5,4 @@ class Photo < ActiveRecord::Base
   validates :name, presence: true
   validates :image, presence: true
   validates :caption, presence: true
-
-  mount_uploader :image, PhotoUploader
 end

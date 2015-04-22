@@ -2,7 +2,6 @@ class Contest < ActiveRecord::Base
   has_many :photos, dependent: :destroy
 
   validates :title, presence: true, uniqueness: true
-  validates :header_image, presence: true
 
   validates :status, presence: true, inclusion: { in: ['pending', 'approved'] }
 
@@ -14,10 +13,12 @@ class Contest < ActiveRecord::Base
   validates :end_at, presence: true
   validate :validate_times
 
+  validates :image_large_url, presence: true
+  validates :image_medium_url, presence: true
+  validates :image_thumb_url, presence: true
+
   scope :pending, -> { where(status: 'pending') }
   scope :approved, -> { where(status: 'approved') }
-
-  mount_uploader :header_image, ContestHeaderUploader
 
   before_validation do
     self.title.try(:strip!)

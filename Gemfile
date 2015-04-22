@@ -52,10 +52,11 @@ group :production do
 end
 
 gem 'email_validator', '~> 1.5.0'
-gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 3.8.0'
-gem 'bootstrap_form'
+gem 'bootstrap_form', '~> 2.1.1'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 gem 'devise', '~> 3.4.0'
 gem 'fancybox2-rails', '~> 0.2.8'
+gem 'aws-sdk', '~> 2.0.39'
+gem 'jquery-ui-rails'
