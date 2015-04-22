@@ -30,6 +30,8 @@ class ContestsController < ApplicationController
   private
 
   def contest_params
-    params.require(:contest).permit :title, :status, :email, :prize, :description, :start_at, :end_at, :rules, :name, :company, :image_large_url, :image_medium_url, :image_thumb_url
+    params.require(:contest).permit :title, :status, :email, :prize, :description, :start_at, :end_at, :rules, :name, :company,
+                                    :image_large_url, :image_medium_url, :image_thumb_url,
+                                    :facebook_handle, :twitter_handle, :instagram_handle, :website_url
   end
 end

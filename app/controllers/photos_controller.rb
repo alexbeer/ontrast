@@ -15,6 +15,7 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit :caption, :name, :email, :image_large_url, :image_medium_url, :image_thumb_url
+    params.require(:photo).permit :caption, :name, :email, :image_large_url, :image_medium_url, :image_thumb_url,
+                                  :facebook_handle, :twitter_handle, :instagram_handle, :website_url
   end
 end
