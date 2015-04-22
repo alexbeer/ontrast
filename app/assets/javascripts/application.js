@@ -17,6 +17,14 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require fancybox
+//= require jquery-ui
+//= require load-image.all.min
+//= require canvas-to-blob.min
+//= require jquery.iframe-transport
+//= require jquery.fileupload
+//= require jquery.fileupload-process
+//= require jquery.fileupload-image
+//= require upload
 //= require_tree .
 
 
