@@ -71,6 +71,8 @@ setupFileUpload = (field) ->
   $(field).bind 'fileuploadprocessdone', (e, data) ->
     that = this
     @upFiles = data.files
+    $(field).val ''
+
     @totalSize = @upFiles[0].size + @upFiles[1].size + @upFiles[2].size
     @totalUploaded = 0
 
