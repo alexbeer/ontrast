@@ -3,6 +3,8 @@ class Photo < ActiveRecord::Base
 
   validates :email, presence: true, email: true
   validates :name, presence: true
-  validates :image, presence: true
   validates :caption, presence: true
+  validates :image_large_url, presence: true
+  validates :image_medium_url, presence: true
+  validates :image_thumb_url, presence: true
 end

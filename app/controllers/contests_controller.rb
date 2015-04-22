@@ -23,6 +23,7 @@ class ContestsController < ApplicationController
   def show
     @contest = Contest.find params[:id]
     @photo = Photo.new contest: @contest
+    @s3_presigned_posts = (1..100).map { |i| s3_presigned_post('photos') }
   end
 
   private

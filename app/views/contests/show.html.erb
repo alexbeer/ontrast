@@ -1,3 +1,7 @@
+<script type="text/javascript">
+  s3PresignedPosts = <%= @s3_presigned_posts.to_json.html_safe %>;
+</script>
+
 <div class="header_image" style="background: url(<%= @contest.image_large_url %>) center no-repeat">
   <div class="contest_title"><%= @contest.title %></div>
 </div>
@@ -15,7 +19,7 @@
     <div id="photos" role="main-tabs" class="tab-pane active" aria-labelledby="photos-tab">
       <% @contest.photos.each do |photo| %>
         <div class="box">
-          <a href="<%= photo.image.url %>" class="submission" rel="contest" title="<%= photo.caption %>"><%= image_tag photo.image.thumb_large.url %></a>
+          <a href="<%= photo.image_large_url %>" class="submission" rel="contest" title="<%= photo.caption %>"><%= image_tag photo.image_medium_url %></a>
         </div>
       <% end %>
     </div>
@@ -27,7 +31,16 @@
 
     <div id="submit" role="main-tabs" class="tab-pane" aria-labelledby="submit-tab">
       <%= bootstrap_form_for [@contest, @photo] do |f| %>
-        <%= f.file_field :image, hide_label: true %>
+        <%= f.file_field :image, hide_label: true, class: 's3-upload' %>
+        <div class="progress" style="display: none">
+          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+          </div>
+        </div>
+
+        <%= f.hidden_field :image_large_url %>
+        <%= f.hidden_field :image_medium_url %>
+        <%= f.hidden_field :image_thumb_url %>
+
         <%= f.text_field :caption, placeholder: 'Caption', hide_label: true %>
         <%= f.text_field :name, placeholder: 'Name', hide_label: true %>
         <%= f.text_field :email, placeholder: 'Email', hide_label: true %>
