@@ -17,6 +17,8 @@ class Contest < ActiveRecord::Base
   validates :image_medium_url, presence: true
   validates :image_thumb_url, presence: true
 
+  validate :validate_image
+
   scope :pending, -> { where(status: 'pending') }
   scope :approved, -> { where(status: 'approved') }
 
@@ -62,6 +64,12 @@ class Contest < ActiveRecord::Base
 
     if start_at.present? and end_at.present?
       errors.add(:start_at, 'must be before end date') unless start_at < end_at
+    end
+  end
+
+  def validate_image
+    if image_large_url.blank? or image_medium_url.blank? or image_thumb_url.blank?
+      errors.add(:header_image, "can't be blank")
     end
   end
 end
