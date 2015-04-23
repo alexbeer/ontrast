@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  include S3PresignedPost
+  
   def create
     @contest = Contest.find params[:contest_id]
 
