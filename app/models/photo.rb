@@ -1,7 +1,7 @@
 class Photo < ActiveRecord::Base
   belongs_to :contest
 
-  validates :email, presence: true, email: true
+  validates :email, presence: true, email: true, uniqueness: { scope: :contest_id, message: 'only one submission per email allowed'}
   validates :name, presence: true
   validates :caption, presence: true
   validates :image_large_url, presence: true
