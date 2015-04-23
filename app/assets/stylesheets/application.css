@@ -133,3 +133,7 @@
 .footnav:hover{
 	opacity:.8;
 }
+.photo-centered {
+	text-align: center;
+	margin: 20px;
+}

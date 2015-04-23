@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
 
   resources :contests do
-    resources :photos
+    resources :photos, only: [:create, :show]
   end
 
 

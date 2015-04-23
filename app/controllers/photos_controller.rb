@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   include S3PresignedPost
-  
+
   def create
     @contest = Contest.find params[:contest_id]
 
@@ -12,6 +12,11 @@ class PhotosController < ApplicationController
       @s3_presigned_posts = (1..100).map { |i| s3_presigned_post('contests') }
       render template: 'contests/show'
     end
+  end
+
+  def show
+    @contest = Contest.find params[:contest_id]
+    @photo = @contest.photos.find params[:id]
   end
 
   private
