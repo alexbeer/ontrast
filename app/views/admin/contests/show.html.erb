@@ -14,7 +14,7 @@
     <div id="photos" role="main-tabs" class="tab-pane active" aria-labelledby="photos-tab">
       <% @contest.photos.each do |photo| %>
         <div class="box">
-          <%= image_tag photo.image.url %>
+          <%= image_tag photo.image_medium_url %>
           <%= link_to 'Delete photo', admin_contest_photo_path(@contest, photo), method: 'Delete', data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
         </div>
       <% end %>
