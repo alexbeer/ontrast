@@ -1,5 +1,6 @@
 <script type="text/javascript">
   s3PresignedPosts = <%= @s3_presigned_posts.to_json.html_safe %>;
+  ZeroClipboard.config( { swfPath: '<%= asset_url('ZeroClipboard.swf') %>' } );
 </script>
 
 <div class="header_image" style="background: url(<%= @contest.image_large_url %>) center no-repeat">
