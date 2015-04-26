@@ -23,6 +23,7 @@
 //= require jquery.fileupload
 //= require jquery.fileupload-process
 //= require jquery.fileupload-image
+//= require ZeroClipboard
 //= require upload
 //= require_tree .
 
@@ -34,4 +35,7 @@ $(document).on('ready page:load', function() {
   });
 
   $('a.submission').fancybox();
+
+  $('.copy-url-button').click(function(e) { e.preventDefault(); })
+  clip = new ZeroClipboard($('.copy-url-button'));
 });

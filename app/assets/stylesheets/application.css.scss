@@ -137,3 +137,13 @@
 	text-align: center;
 	margin: 20px;
 }
+
+.copy-url-button {
+	margin-top: -34px;
+	margin-right: 2px;
+	width: 32px;
+	height: 32px;
+	background: image-url('copy.png');
+  float: right;
+  position: relative;
+}

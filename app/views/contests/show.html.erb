@@ -20,6 +20,7 @@
       <% @contest.photos.each do |photo| %>
         <div class="box">
           <a href="<%= photo.image_large_url %>" class="submission" rel="contest" title="<%= photo.caption %>"><%= image_tag photo.image_medium_url %></a>
+          <a href="#copy-url" data-clipboard-text="<%= contest_photo_url(@contest, photo) %>" class="copy-url-button"></a>
         </div>
       <% end %>
     </div>
