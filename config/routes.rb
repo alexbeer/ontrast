@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
 
   resources :contests do
+    get 'previous', on: :collection
     resources :photos, only: [:create, :show]
   end
 

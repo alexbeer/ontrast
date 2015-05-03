@@ -23,6 +23,11 @@ class ContestsController < ApplicationController
     @contests = Contest.current_contests(10)
   end
 
+  def previous
+    @contests = Contest.previous_contests(10)
+    render action: 'index'
+  end
+
   def show
     @contest = Contest.find params[:id]
     @photos = @contest.photos_for_view(params[:page])

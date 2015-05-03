@@ -67,6 +67,10 @@ class Contest < ActiveRecord::Base
     approved.where('start_at <= ? AND end_at > ?', Time.now, Time.now).order(created_at: :desc).limit(n)
   end
 
+  def self.previous_contests(n = 10)
+    approved.where('end_at < ?', Time.now).order(created_at: :desc).limit(n)
+  end
+
   def photos_for_view(page = 1)
     photos.order(created_at: :desc).page(page).per(12)
   end
