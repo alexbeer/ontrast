@@ -75,6 +75,10 @@ class Contest < ActiveRecord::Base
     photos.order(created_at: :desc).page(page).per(12)
   end
 
+  def milliseconds_left
+    (end_at - Time.now).to_i * 1000
+  end
+
   protected
 
   def validate_times
