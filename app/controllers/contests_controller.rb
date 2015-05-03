@@ -3,6 +3,7 @@ class ContestsController < ApplicationController
 
   def new
     @contest = Contest.new
+
     @s3_presigned_posts = (1..100).map { |i| s3_presigned_post('contests') }
   end
 
@@ -12,6 +13,7 @@ class ContestsController < ApplicationController
     if @contest.save
       redirect_to contest_path(@contest)
     else
+      @photos = @contest.photos_for_view(params[:page])
       @s3_presigned_posts = (1..100).map { |i| s3_presigned_post('contests') }
       render action: 'new'
     end
@@ -23,6 +25,7 @@ class ContestsController < ApplicationController
 
   def show
     @contest = Contest.find params[:id]
+    @photos = @contest.photos_for_view(params[:page])
     @photo = Photo.new contest: @contest
     @s3_presigned_posts = (1..100).map { |i| s3_presigned_post('photos') }
   end

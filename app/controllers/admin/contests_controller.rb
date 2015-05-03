@@ -38,6 +38,7 @@ class Admin::ContestsController < ApplicationController
 
   def show
     @contest = Contest.find params[:id]
+    @photos = @contest.photos_for_view(params[:page])
   end
 
   def destroy
