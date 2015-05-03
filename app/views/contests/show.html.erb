@@ -26,9 +26,11 @@
           <a href="#copy-url" data-clipboard-text="<%= contest_photo_url(@contest, photo) %>" class="copy-url-button"></a>
         </div>
       <% end %>
+
+      <%= paginate @photos, theme: 'twitter-bootstrap-3' %>
     </div>
 
-    <%= paginate @photos, theme: 'twitter-bootstrap-3' %>
+
 
 
     <div id="rules" role="main-tabs" class="tab-pane" aria-labelledby="rules-tab">
