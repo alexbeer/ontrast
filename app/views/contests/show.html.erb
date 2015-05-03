@@ -12,7 +12,9 @@
   <ul id="main-tabs" class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#photos" id="photos-tab" role="tab" data-toggle="tab" aria-controls="photos">Current Entries</a></li>
     <li role="presentation"><a href="#rules" id="rules-tab" role="tab" data-toggle="tab" aria-controls="rules">Rules</a></li>
-    <li role="presentation"><a href="#submit" id="submit-tab" role="tab" data-toggle="tab" aria-controls="submit">Submit</a></li>
+    <% if @contest.can_submit_photo? %>
+      <li role="presentation"><a href="#submit" id="submit-tab" role="tab" data-toggle="tab" aria-controls="submit">Submit</a></li>
+    <% end %>
   </ul>
 
 <!-- in 'current_entries' tab -->
@@ -33,32 +35,34 @@
       <pre><%= @contest.rules %></pre>
     </div>
 
-    <div id="submit" role="main-tabs" class="tab-pane" aria-labelledby="submit-tab">
-      <%= bootstrap_form_for [@contest, @photo] do |f| %>
-        <%= f.file_field :image, hide_label: true, class: 's3-upload' %>
-        <div class="progress" style="display: none">
-          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    <% if @contest.can_submit_photo? %>
+      <div id="submit" role="main-tabs" class="tab-pane" aria-labelledby="submit-tab">
+        <%= bootstrap_form_for [@contest, @photo] do |f| %>
+          <%= f.file_field :image, hide_label: true, class: 's3-upload' %>
+          <div class="progress" style="display: none">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            </div>
           </div>
-        </div>
 
-        <%= f.hidden_field :image_large_url %>
-        <%= f.hidden_field :image_medium_url %>
-        <%= f.hidden_field :image_thumb_url %>
+          <%= f.hidden_field :image_large_url %>
+          <%= f.hidden_field :image_medium_url %>
+          <%= f.hidden_field :image_thumb_url %>
 
-        <%= f.text_field :caption, placeholder: 'Caption', hide_label: true %>
-        <%= f.text_field :name, placeholder: 'Name', hide_label: true %>
-        <%= f.text_field :email, placeholder: 'Email', hide_label: true %>
+          <%= f.text_field :caption, placeholder: 'Caption', hide_label: true %>
+          <%= f.text_field :name, placeholder: 'Name', hide_label: true %>
+          <%= f.text_field :email, placeholder: 'Email', hide_label: true %>
 
-        <%= f.text_field :facebook_handle, placeholder: 'Facebook handle (optional)', hide_label: true %>
-        <%= f.text_field :twitter_handle, placeholder: 'Twitter handle (optional)', hide_label: true %>
-        <%= f.text_field :instagram_handle, placeholder: 'Instagram handle (optional)', hide_label: true %>
-        <%= f.text_field :website_url, placeholder: 'Website (optional)', hide_label: true %>
-        
-        <%= f.form_group do %>
-          <%= f.submit %>
+          <%= f.text_field :facebook_handle, placeholder: 'Facebook handle (optional)', hide_label: true %>
+          <%= f.text_field :twitter_handle, placeholder: 'Twitter handle (optional)', hide_label: true %>
+          <%= f.text_field :instagram_handle, placeholder: 'Instagram handle (optional)', hide_label: true %>
+          <%= f.text_field :website_url, placeholder: 'Website (optional)', hide_label: true %>
+          
+          <%= f.form_group do %>
+            <%= f.submit %>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
 

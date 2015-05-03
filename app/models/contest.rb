@@ -51,6 +51,18 @@ class Contest < ActiveRecord::Base
     self.status == 'pending'
   end
 
+  def started?
+    self.start_at >= Time.now
+  end
+
+  def ended?
+    self.end_at < Time.now
+  end
+
+  def can_submit_photo?
+    !ended?
+  end
+
   def self.current_contests(n)
     approved.where('start_at <= ? AND end_at > ?', Time.now, Time.now).order(created_at: :desc).limit(n)
   end

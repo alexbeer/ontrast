@@ -10,6 +10,14 @@
   <%= render 'layouts/header' %>
   <%= render 'layouts/headerblock' %>
 
+  <% if flash[:notice] %>
+    <p class="alert alert-info"><%= flash[:notice] %></p>
+  <% end %>
+
+  <% if flash[:error] %>
+    <p class="alert alert-danger"><%= flash[:error] %></p>
+  <% end %>
+
   <%= yield %>
 
   <%= render 'layouts/footer' %>
